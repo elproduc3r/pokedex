@@ -5,6 +5,10 @@ Type in any Pokemon character to see details about it. All of your searches will
 Before making any API requests, the history is first checked to prevent any duplicate requests.
 
 ## Not Yet Implemented
+
+- Able to see other evolutions of Pokemon and be able to navigate to specific Pokemon in the evolution chain.
+- Automated tests that ensure the business logic implemented is correct.
+
 ### LocalStorage 
 - This was not listed in the project from what I read but it might be nice to persist the data so when a user returns the history is still available
   
