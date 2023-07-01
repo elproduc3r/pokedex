@@ -1,16 +1,18 @@
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../store";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 import styled from "@emotion/styled";
+import TypeLabels from "./TypeLabels";
 
 const ContainerDiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 220px;
-  height: 300px;
+  height: auto;
   background-color: #f0f0f0;
   border-radius: 10px;
   padding: 20px;
   margin: 1rem;
+  text-align: left;
 `;
 
 const StyledImg = styled.img`
@@ -21,23 +23,46 @@ const StyledImg = styled.img`
 
 const StyledDetailsDiv = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-top: 1rem;
+`;
+
+const StyledHeaderP = styled.p`
+  display: block;
+  margin: .5rem 0 0 0;
+`;
+
+const StyledHeaderSmallP = styled.p`
+  display: block;
+  margin: .5rem 0 0 0;
+  font-size: .75rem;
 `;
 
 const PokemonCard = (): JSX.Element => {
   const defaultCard = {
     name: "",
-    img: "blankCard.png"
+    img: "blankCard.png",
+    types: []
   };
   const {current} = useSelector((state: RootState) => state.search);
   const card = current ? current : defaultCard;
+  const hasTypes = card.types && card.types.length > 0;
 
   return (
     <ContainerDiv>
       <StyledImg src={card.img} alt={card.name} />
       <StyledDetailsDiv>
-        <span><strong>{card.name}</strong></span>
+        <StyledHeaderP><strong>{card.name}</strong></StyledHeaderP>
+        {
+          hasTypes && (
+            <>
+              <p>Types</p>
+              <div>
+                <TypeLabels name="types" value={card.types || []}/>
+              </div>
+            </>
+          )
+        }
       </StyledDetailsDiv>
     </ContainerDiv>
   );

@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
-import { RootState } from "../store";
+import { RootState } from "../../store";
 import {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToHistory, setCurrentPokemon, setErrorMsg } from "../features/Search/search.slice";
+import { addToHistory, setCurrentPokemon, setErrorMsg } from "../../features/Search/search.slice";
+import { PokemonTypes } from "./types";
 
 const StyledInput = styled.input`
   font-size: 1rem;
@@ -32,26 +33,27 @@ const Search = () => {
 
   const getPokemon = async (e: any) => {
     e.preventDefault();
-    let errorMsg = "";
     const POKEMON_API = "https://pokeapi.co/api/v2/pokemon/";
 
     let selectedPokemon = history.find(character => character.name === query);
     if(!selectedPokemon) {
-
       const response = await fetch(`${POKEMON_API}${query}`);
-
       if (response.status >= 200 && response.status < 300) {
-
         const jsonData = await response.json();
-
         const {
           name,
-          sprites
+          sprites,
+          types
         } = jsonData;
+
+        const allTypes = types.map((item: PokemonTypes) => {
+          return item.type.name;
+        })
 
         selectedPokemon = {
           name,
-          img: sprites.other["official-artwork"].front_default
+          img: sprites.other["official-artwork"].front_default,
+          types: allTypes
         };
 
         dispatch(addToHistory(selectedPokemon));

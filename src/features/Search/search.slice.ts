@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface CharacterType {
   name: string;
   img: string;
+  types?: string[];
 };
 
 interface InitialStateProps {
