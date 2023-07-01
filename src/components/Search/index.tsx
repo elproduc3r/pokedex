@@ -3,7 +3,7 @@ import { RootState } from "../../store";
 import {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToHistory, setCurrentPokemon, setErrorMsg } from "../../features/Search/search.slice";
-import { PokemonTypes, PokemonMovesType } from "./types";
+import { PokemonTypes, PokemonMovesType, PokemonAbilitiesType } from "./types";
 
 const StyledInput = styled.input`
   font-size: 1rem;
@@ -45,16 +45,19 @@ const Search = () => {
           sprites,
           types,
           moves,
+          abilities,
         } = jsonData;
 
         const allTypes = types.map((item: PokemonTypes) => item.type.name);
         const allMoves = moves.map((item: PokemonMovesType) => item.move.name);
+        const allAbilities = abilities.map((item: PokemonAbilitiesType) => item.ability.name);
 
         selectedPokemon = {
           name,
           img: sprites.other["official-artwork"].front_default,
           types: allTypes,
           moves: allMoves,
+          abilities: allAbilities
         };
 
         dispatch(addToHistory(selectedPokemon));
@@ -62,8 +65,7 @@ const Search = () => {
       } else if(response.status === 404) {
         dispatch(setErrorMsg(`No results for "${query}". Please try again.`));
       }
-
-    } 
+    }
 
     if(selectedPokemon) {
       dispatch(setCurrentPokemon(selectedPokemon));

@@ -16,6 +16,7 @@ interface StyledLabelProps {
 const COLORS: ColorType = {
   types: "#4592c4",
   moves: "#b2982e",
+  abilities: "#ce4f96"
 };
 
 const StyledLabelSpan = styled.span<StyledLabelProps>(({type}) => {
@@ -24,7 +25,7 @@ const StyledLabelSpan = styled.span<StyledLabelProps>(({type}) => {
     backgroundColor: COLORS[type],
     borderRadius: "6px",
     color: "white",
-    textWrap: "nowrap",
+    textWrap: "nowrap"
   };
 });
 
