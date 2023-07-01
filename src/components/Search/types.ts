@@ -1,4 +1,3 @@
-
 export interface PokemonType {
   name: string;
   url: string;
@@ -11,6 +10,12 @@ export interface PokemonTypes {
 
 export interface PokemonMovesType {
   move: {
+    name: string;
+  }
+}
+
+export interface PokemonAbilitiesType {
+  ability: {
     name: string;
   }
 }

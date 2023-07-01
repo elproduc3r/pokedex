@@ -5,6 +5,7 @@ export interface CharacterType {
   img: string;
   types?: string[];
   moves?: string[];
+  abilities?: string[];
 };
 
 interface InitialStateProps {
@@ -22,12 +23,10 @@ const SearchSlice = createSlice({
   initialState,
   reducers: {
     addToHistory: (state: any, action: PayloadAction<CharacterType>) => {
-      state.history.push(action.payload)
-      // TODO: set to LS
+      state.history.push(action.payload);
     },
     setCurrentPokemon: (state: any, action: PayloadAction<CharacterType>) => {
       state.current = action.payload;
-      // TODO: set to LS
     },
     setErrorMsg: (state: any, action: PayloadAction<string | undefined>) => {
       state.error = action.payload;

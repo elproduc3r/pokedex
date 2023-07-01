@@ -30,35 +30,36 @@ const StyledDetailsDiv = styled.div`
 const StyledHeaderP = styled.p`
   display: block;
   margin: .5rem 0 0 0;
+  font-weight: bold;
 `;
 
 const PokemonCard = (): JSX.Element => {
+
+  const BLANK_IMG = "blankCard.png";
   const defaultCard = {
     name: "",
-    img: "blankCard.png",
+    img: BLANK_IMG,
     types: [],
-    moves: []
+    moves: [],
+    abilities: []
   };
   const {current} = useSelector((state: RootState) => state.search);
-  const card = current ? current : defaultCard;
-  const hasTypes = card.types && card.types.length > 0;
-  const hasMoves = card.moves && card.moves.length > 0;
+  const currentCard = current || defaultCard;
+  const {types = [], moves = [], abilities = []} = currentCard;
 
   return (
     <ContainerDiv>
-      <StyledImg src={card.img} alt={card.name} />
+      <StyledImg src={currentCard?.img} alt={currentCard.name} />
       <StyledDetailsDiv>
-        <StyledHeaderP><strong>{card.name}</strong></StyledHeaderP>
-        {
-          hasTypes && <Labels name="types" value={card.types || []}/>
-        }
-        {
-          hasMoves && <Labels name="moves" value={card.moves || []}/>
-        }
+        <StyledHeaderP>
+          {currentCard.name}
+        </StyledHeaderP>
+        <Labels name="types" value={types}/>
+        <Labels name="moves" value={moves}/>
+        <Labels name="abilities" value={abilities}/>
       </StyledDetailsDiv>
     </ContainerDiv>
   );
-
 };
 
 export default PokemonCard;

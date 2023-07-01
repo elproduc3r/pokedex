@@ -1,5 +1,8 @@
 # Getting Started with Pokedex
+Type in any Pokemon character to see details about it. All of your searches will show in the Recent Searches section. Click on any of your recent searches to quckly access that character again.
 
+## Notes
+Before making any API requests, the history is first checked to prevent any duplicate requests.
 
 ## Not Yet Implemented
 ### LocalStorage 

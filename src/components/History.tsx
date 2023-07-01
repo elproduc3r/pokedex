@@ -12,6 +12,9 @@ const HistoryContainerDiv = styled.div`
   border-radius: 10px;
   padding: 20px;
   margin: 1rem;
+  h3 {
+    margin-top: 0;
+  }
 `;
 
 const ListContainerDiv = styled.div`
