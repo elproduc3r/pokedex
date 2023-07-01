@@ -3,7 +3,7 @@ import { RootState } from "../../store";
 import {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToHistory, setCurrentPokemon, setErrorMsg } from "../../features/Search/search.slice";
-import { PokemonTypes } from "./types";
+import { PokemonTypes, PokemonMovesType } from "./types";
 
 const StyledInput = styled.input`
   font-size: 1rem;
@@ -43,17 +43,18 @@ const Search = () => {
         const {
           name,
           sprites,
-          types
+          types,
+          moves,
         } = jsonData;
 
-        const allTypes = types.map((item: PokemonTypes) => {
-          return item.type.name;
-        })
+        const allTypes = types.map((item: PokemonTypes) => item.type.name);
+        const allMoves = moves.map((item: PokemonMovesType) => item.move.name);
 
         selectedPokemon = {
           name,
           img: sprites.other["official-artwork"].front_default,
-          types: allTypes
+          types: allTypes,
+          moves: allMoves,
         };
 
         dispatch(addToHistory(selectedPokemon));
