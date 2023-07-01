@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import styled from "@emotion/styled";
-import TypeLabels from "./TypeLabels";
+import Labels from "./Labels";
 
 const ContainerDiv = styled.div`
   display: flex;
@@ -32,21 +32,17 @@ const StyledHeaderP = styled.p`
   margin: .5rem 0 0 0;
 `;
 
-const StyledHeaderSmallP = styled.p`
-  display: block;
-  margin: .5rem 0 0 0;
-  font-size: .75rem;
-`;
-
 const PokemonCard = (): JSX.Element => {
   const defaultCard = {
     name: "",
     img: "blankCard.png",
-    types: []
+    types: [],
+    moves: []
   };
   const {current} = useSelector((state: RootState) => state.search);
   const card = current ? current : defaultCard;
   const hasTypes = card.types && card.types.length > 0;
+  const hasMoves = card.moves && card.moves.length > 0;
 
   return (
     <ContainerDiv>
@@ -54,14 +50,10 @@ const PokemonCard = (): JSX.Element => {
       <StyledDetailsDiv>
         <StyledHeaderP><strong>{card.name}</strong></StyledHeaderP>
         {
-          hasTypes && (
-            <>
-              <p>Types</p>
-              <div>
-                <TypeLabels name="types" value={card.types || []}/>
-              </div>
-            </>
-          )
+          hasTypes && <Labels name="types" value={card.types || []}/>
+        }
+        {
+          hasMoves && <Labels name="moves" value={card.moves || []}/>
         }
       </StyledDetailsDiv>
     </ContainerDiv>

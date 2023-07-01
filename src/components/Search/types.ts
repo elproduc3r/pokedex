@@ -9,4 +9,10 @@ export interface PokemonTypes {
   type: PokemonType;
 };
 
+export interface PokemonMovesType {
+  move: {
+    name: string;
+  }
+}
+
 

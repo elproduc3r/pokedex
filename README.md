@@ -2,7 +2,9 @@
 
 
 ## Not Yet Implemented
-- LocalStorage
+### LocalStorage 
+- This was not listed in the project from what I read but it might be nice to persist the data so when a user returns the history is still available
+  
 
 ## Available Scripts
 

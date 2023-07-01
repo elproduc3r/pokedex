@@ -4,6 +4,7 @@ export interface CharacterType {
   name: string;
   img: string;
   types?: string[];
+  moves?: string[];
 };
 
 interface InitialStateProps {
