@@ -12,9 +12,14 @@ There are a lot of sprites for some characters so I chose to only show a handful
 - Able to see other evolutions of Pokemon and be able to navigate to specific Pokemon in the evolution chain.
 - Automated tests that ensure the business logic implemented is correct.
 
-### LocalStorage 
-- This was not listed in the project from what I read but it might be nice to persist the data so when a user returns the history is still available
-  
+### Running Pokedex
+
+To run Pokedex:
+
+1. clone this repo
+2. In your Terminal run: `npm i`
+3. In your Terminal run: `npm run start`
+
 
 ## Available Scripts
 
