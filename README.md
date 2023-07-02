@@ -4,6 +4,9 @@ Type in any Pokemon character to see details about it. All of your searches will
 ## Notes
 Before making any API requests, the history is first checked to prevent any duplicate requests.
 
+## Sprites
+There are a lot of sprites for some characters so I chose to only show a handful of the sprites at the top level of the`sprites` data. I also indexed them in reverse order in `getSprites` because the "back facing" sprites were always first and it feels better looking at the "front facing" sprites first.
+
 ## Not Yet Implemented
 
 - Able to see other evolutions of Pokemon and be able to navigate to specific Pokemon in the evolution chain.

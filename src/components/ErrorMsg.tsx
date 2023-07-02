@@ -9,7 +9,7 @@ const ErrorMsgDiv = styled.div`
   border-radius: 10px;
 `
 
-const ErrorMsg = () => {
+const ErrorMsg = (): JSX.Element | null => {
   const {error} = useSelector((state: RootState) => state.search);
   return (
     error ? (

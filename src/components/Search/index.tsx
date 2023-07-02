@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import { RootState } from "../../store";
-import {useState} from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToHistory, setCurrentPokemon, setErrorMsg } from "../../features/Search/search.slice";
-import { PokemonTypes, PokemonMovesType, PokemonAbilitiesType } from "./types";
+import { PokemonTypes, PokemonMovesType, PokemonAbilitiesType, SpritesType } from "./types";
 
 const StyledInput = styled.input`
   font-size: 1rem;
@@ -25,6 +25,22 @@ const StyledButton = styled.button`
   margin-left: 1rem;
 `;
 
+const getSprites = (sprites: SpritesType) => {
+  const keys = Object.keys(sprites);
+  const allSprites = [];
+  for(let i = keys.length - 1; i >= 0; i--){
+    const url = sprites[keys[i]];
+    if(typeof url === "string" && url.startsWith("https://")){
+      const image = {
+        name: keys[i],
+        url
+      };
+      allSprites.push(image);
+    }
+  }
+  return allSprites;
+}  
+
 const Search = () => {
 
   const [query, setQuery] = useState<any>("");
@@ -34,7 +50,6 @@ const Search = () => {
   const getPokemon = async (e: any) => {
     e.preventDefault();
     const POKEMON_API = "https://pokeapi.co/api/v2/pokemon/";
-
     let selectedPokemon = history.find(character => character.name === query);
     if(!selectedPokemon) {
       const response = await fetch(`${POKEMON_API}${query}`);
@@ -51,13 +66,15 @@ const Search = () => {
         const allTypes = types.map((item: PokemonTypes) => item.type.name);
         const allMoves = moves.map((item: PokemonMovesType) => item.move.name);
         const allAbilities = abilities.map((item: PokemonAbilitiesType) => item.ability.name);
+        const allSPrites = getSprites(sprites);
 
         selectedPokemon = {
           name,
           img: sprites.other["official-artwork"].front_default,
           types: allTypes,
           moves: allMoves,
-          abilities: allAbilities
+          abilities: allAbilities,
+          sprites: allSPrites
         };
 
         dispatch(addToHistory(selectedPokemon));

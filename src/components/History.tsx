@@ -24,7 +24,7 @@ const ListContainerDiv = styled.div`
   border-radius: 10px;
 `;
 
-const History = () => {
+const History = (): JSX.Element => {
 
   const {history} = useSelector((state: RootState) => state.search);
   const dispatch = useDispatch();
