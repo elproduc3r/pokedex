@@ -3,7 +3,7 @@ Type in any Pokemon character to see details about it. All of your searches will
 
 ## Notes
 Before making any API requests, the history is first checked to prevent any duplicate requests.
-
+All types are exported to help with testing. Types are usually required in well written tests.
 ## Sprites
 There are a lot of sprites for some characters so I chose to only show a handful of the sprites at the top level of the`sprites` data. I also indexed them in reverse order in `getSprites` because the "back facing" sprites were always first and it feels better looking at the "front facing" sprites first.
 
