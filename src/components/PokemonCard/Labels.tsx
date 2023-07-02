@@ -1,17 +1,5 @@
 import styled from "@emotion/styled";
-
-interface ColorType {
-  [index: string]: string;
-};
-
-interface LabelPropTypes {
-  name: string;
-  value: string[];
-};
-
-interface StyledLabelProps {
-  type: string;
-};
+import {ColorType, StyledLabelProps, LabelsPropsType} from "./types";
 
 const COLORS: ColorType = {
   types: "#4592c4",
@@ -45,20 +33,17 @@ const StyledP = styled.p`
   text-transform: capitalize;
 `;
 
-const Labels = (props: LabelPropTypes) => {
-  const {value, name} = props;
-  return (
-    <>
-      <StyledP>{name}</StyledP>
-      <StyledLabelContainerDiv>
-        {value.map((value, index) => (
-          <StyledLabelSpan key={`${value}-${index}`} type={name}>
-            {value}
-          </StyledLabelSpan>
-        ))}
-      </StyledLabelContainerDiv>
-    </>
-  )
-};
+const Labels = ({value, name}: LabelsPropsType): JSX.Element => (
+  <>
+    <StyledP>{name}</StyledP>
+    <StyledLabelContainerDiv>
+      {value.map((value, index) => (
+        <StyledLabelSpan key={`${value}-${index}`} type={name}>
+          {value}
+        </StyledLabelSpan>
+      ))}
+    </StyledLabelContainerDiv>
+  </>
+);
 
 export default Labels;

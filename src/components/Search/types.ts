@@ -19,5 +19,14 @@ export interface PokemonAbilitiesType {
     name: string;
   }
 }
+export interface SpriteItemType {
+  [index: string]: string;
+}
 
-
+export type SpritesType = SpriteItemType & {
+  other: {
+    dreamworld: SpriteItemType;
+    home: SpriteItemType;
+    "official-artwork": SpriteItemType;
+  }
+}

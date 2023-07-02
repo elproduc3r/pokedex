@@ -1,11 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+export interface CharacterImageType {
+  name: string;
+  url: string;
+};
 export interface CharacterType {
   name: string;
   img: string;
   types?: string[];
   moves?: string[];
   abilities?: string[];
+  sprites?:CharacterImageType[];
 };
 
 interface InitialStateProps {
