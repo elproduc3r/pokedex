@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { getLSHistory, updateLSHistory } from "../localStorageHistory";
 
 export interface CharacterImageType {
   name: string;
@@ -19,8 +20,9 @@ interface InitialStateProps {
   error?: string;
 };
 
+const initialHistory: CharacterType[] = getLSHistory();
 const initialState: InitialStateProps = {
-  history: [],
+  history: initialHistory,
 };
 
 const SearchSlice = createSlice({
@@ -28,6 +30,7 @@ const SearchSlice = createSlice({
   initialState,
   reducers: {
     addToHistory: (state: any, action: PayloadAction<CharacterType>) => {
+      updateLSHistory(action.payload);
       state.history.push(action.payload);
     },
     setCurrentPokemon: (state: any, action: PayloadAction<CharacterType>) => {
