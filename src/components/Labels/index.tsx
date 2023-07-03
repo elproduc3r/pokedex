@@ -40,7 +40,6 @@ const StyledP = styled.p`
 const Labels = ({value, name}: LabelsPropsType): JSX.Element => (
   <>
     <StyledP>{name}</StyledP>
-    
     <StyledLabelContainerDiv>
       {value.map((value, index) => (
         <StyledLabelSpan key={`${value}-${index}`} type={name}>
