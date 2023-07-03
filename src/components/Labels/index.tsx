@@ -14,7 +14,8 @@ const StyledLabelSpan = styled.span<StyledLabelProps>(({type}) => {
     borderRadius: "6px",
     color: "white",
     textWrap: "nowrap",
-    wordBreak: "keep-all"
+    wordBreak: "keep-all",
+    whiteSpace: "nowrap"
   };
 });
 
