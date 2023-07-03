@@ -13,15 +13,19 @@ const StyledLabelSpan = styled.span<StyledLabelProps>(({type}) => {
     backgroundColor: COLORS[type],
     borderRadius: "6px",
     color: "white",
-    textWrap: "nowrap"
+    textWrap: "nowrap",
+    wordBreak: "keep-all"
   };
 });
 
 const StyledLabelContainerDiv = styled.div`
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
   background-color: white;
   border-radius: 10px;
-  overflow-x: auto;
   padding: 10px 4px;
+  width: auto;
   span {
     margin-left: 4px;
   }

@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import styled from "@emotion/styled";
-import { RootState } from "../../store";
+import { RootState } from "../store";
 import Labels from "./Labels";
-import Image from "../Image";
-import Sprites from "../Sprites";
+import Image from "./Image";
+import Sprites from "./Sprites";
 
 const ContainerDiv = styled.div`
   display: flex;
