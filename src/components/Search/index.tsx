@@ -10,6 +10,7 @@ const StyledInput = styled.input`
   padding: 0.5rem;
   border-radius: 5px;
   border-width: 0px;
+  text-transform: lowercase;
 `;
 
 const StyledButton = styled.button`
