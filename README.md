@@ -3,12 +3,16 @@ Type in any Pokemon character to see details about it. All of your searches will
 
 ## Notes
 Before making any API requests, the history is first checked to prevent any duplicate requests.
-All types are exported to help with testing. Types are usually required in well written tests.
-## Sprites
-There are a lot of sprites for some characters so I chose to only show a handful of the sprites at the top level of the`sprites` data. I also indexed them in reverse order in `getSprites` because the "back facing" sprites were always first and it feels better looking at the "front facing" sprites first.
+All types are exported to help with testing. Types are usually required in well written tests. Additionally, this was developed with the following engines:
+```
+  "node": "16.20.0",
+  "npm": "8.19.4"
+```
+### Sprites
+There are a lot of sprites for some characters so I chose to only show a handful of the sprites at the top level of the`sprites` data. I also indexed them in reverse order in `getSprites` because the "back facing" sprites were always first and it is a better experience to see the "front facing" sprites first.
 
 ## Not Yet Implemented
-
+These 2 items were not yet implemented:
 - Able to see other evolutions of Pokemon and be able to navigate to specific Pokemon in the evolution chain.
 - Automated tests that ensure the business logic implemented is correct.
 
